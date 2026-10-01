@@ -1,0 +1,24 @@
+Humboldt Bay sources
+Author: Kevin Tieu
+
+Tide predictions
+  Station 9418767, North Spit, Humboldt Bay, California
+  Product: high and low predictions
+  Datum: MLLW
+  Units: English (feet)
+  Time zone in the sample file: local standard / local daylight (lst_ldt)
+  Refresh example:
+    curl -o sample_tides.csv "https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date=20261001&end_date=20261014&station=9418767&product=predictions&datum=MLLW&time_zone=lst_ldt&interval=hilo&units=english&format=csv"
+
+Buoy observations
+  Station 46022, Eel River, about 17 nautical miles west-southwest of Eureka
+  File layout: NDBC realtime2
+  Wind in the text file is meters per second. The binary record stores knots.
+  Wave height in the text file is meters. The binary record stores feet.
+  MM means the sensor value is missing.
+  Refresh example:
+    curl -o sample_buoy.txt "https://www.ndbc.noaa.gov/data/realtime2/46022.txt"
+
+Clock
+  Export TZ=America/Los_Angeles before make and before a query.
+  Tide text is local. Buoy text is UTC. The program converts buoy times with timegm.
